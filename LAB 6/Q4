@@ -1,0 +1,15 @@
+import pandas as pd
+
+data = {
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [24, 30, 22, 35],
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston']
+}
+
+df = pd.DataFrame(data)
+
+custom_index = range(5, 5 + len(df))
+
+df.index = custom_index
+
+print(df)
