@@ -1,0 +1,17 @@
+import pandas as pd
+
+data = {
+    'YEAR': [1986, 1986, 1985],
+    'WHO Region': ['Western Pacific', 'Americas', 'Africa'],
+    'Country': ['Vietnam', 'Uruguay', "Côte d'Ivoire"],
+    'Beverage Types': ['Vine', 'Other', 'Wine'],
+    'Display Value': [0, 0.5, 1.62]
+}
+
+df = pd.DataFrame(data)
+
+dimensions = df.shape
+print(f"Dimensions of the DataFrame: {dimensions}")
+
+column_names = df.columns.tolist()
+print("Column names:", column_names)
