@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+
+cities = ['New York', 'Karachi', 'Lahore', 'Multan', 'Islamabad', 
+          'Hyderabad', 'Larkana', 'Faislabad', 'Quetta', 'Sukkur']
+populations = [8419600, 3980400, 2716000, 2328000, 1690000, 
+               1584200, 1547200, 1423800, 1341100, 1027500]
+
+plt.figure(figsize=(10, 6))
+colors = plt.cm.viridis(range(len(cities)))  
+plt.barh(cities, populations, color=colors)
+
+plt.xlabel('Population')
+plt.title('Population of Cities')
+
+plt.tight_layout()
+plt.show()
