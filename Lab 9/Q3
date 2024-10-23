@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+
+flavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Mint', 'Cookie Dough', 
+           'Rocky Road', 'Mango', 'Pistachio', 'Coffee', 'Caramel']
+scoops_sold = [150, 200, 120, 80, 100, 90, 60, 50, 70, 40]
+
+plt.figure(figsize=(7, 7))
+colors = plt.cm.Paired(range(len(flavors)))  
+plt.pie(scoops_sold, labels=flavors, autopct='%1.1f%%', colors=colors, startangle=140)
+
+plt.title('Ice Cream Sales Distribution')
+
+plt.axis('equal')
+
+plt.show()
