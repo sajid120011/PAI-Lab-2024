@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+students = [f'Student {i}' for i in range(1, 21)]
+heights = np.random.randint(140, 190, size=20)  
+
+plt.figure(figsize=(10, 5))
+colors = plt.cm.rainbow(np.linspace(0, 1, len(students)))
+plt.bar(students, heights, color=colors)
+plt.xticks(rotation=90)
+plt.title("Bar Chart of Student Heights")
+plt.xlabel("Students")
+plt.ylabel("Heights (cm)")
+plt.tight_layout()  
+plt.show()
+
+plt.figure(figsize=(7, 7))
+plt.pie(heights, labels=students, autopct='%1.1f%%', colors=colors, startangle=140)
+plt.title("Pie Chart of Student Heights Distribution")
+plt.axis('equal')  
+plt.show()
