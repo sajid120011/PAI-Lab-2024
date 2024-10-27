@@ -1,0 +1,20 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('sea_level_rise.csv')
+
+if 'Year' not in data.columns or 'SeaLevelRise' not in data.columns:
+    raise ValueError("The dataset must contain 'Year' and 'SeaLevelRise' columns.")
+
+years = data['Year']
+sea_level_rise = data['SeaLevelRise']
+
+plt.figure(figsize=(10, 6))
+plt.scatter(years, sea_level_rise, color='blue', marker='o')
+
+plt.title('Sea Level Rise Over the Past 100 Years')
+plt.xlabel('Year')
+plt.ylabel('Sea Level Rise (in mm)')
+plt.grid()
+
+plt.show()
