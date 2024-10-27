@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]  # Months from January (1) to December (12)
+y1 = [3, 5, 9, 15, 20, 25, 30, 28, 20, 15, 8, 4]  # Average monthly temperature
+y2 = [50, 40, 30, 20, 10, 5, 0, 5, 15, 25, 40, 60]  # Average monthly rainfall
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(x, y1, label='Average Temperature (°C)', color='pink', marker='o')
+
+plt.plot(x, y2, label='Average Rainfall (mm)', color='gray', marker='o')
+
+plt.title("Two Lines on One Graph")
+plt.xlabel("Amazing X-axis")
+plt.ylabel("Incredible Y-axis")
+
+plt.legend(loc='lower right')
+
+plt.grid()
+
+plt.show()
