@@ -1,0 +1,20 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('students.csv')
+
+if 'Age' not in data.columns:
+    raise ValueError("The dataset must contain an 'Age' column.")
+
+bins = [17, 25, 30, 35, 100]  # Upper bounds of age groups
+labels = ['18-25', '26-30', '31-35', '36 and above']
+
+data['Age Group'] = pd.cut(data['Age'], bins=bins, labels=labels, right=True)
+
+age_group_counts = data['Age Group'].value_counts()
+
+plt.figure(figsize=(8, 6))
+plt.pie(age_group_counts, labels=age_group_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Age Distribution Among Students')
+plt.axis('equal')  # Equal aspect ratio ensures the pie chart is circular.
+plt.show()
