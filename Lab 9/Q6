@@ -1,0 +1,22 @@
+import matplotlib.pyplot as plt
+
+students = ['Student 1', 'Student 2', 'Student 3', 'Student 4', 'Student 5',
+            'Student 6', 'Student 7', 'Student 8', 'Student 9', 'Student 10']
+math_marks = [85, 78, 90, 70, 88, 92, 76, 95, 80, 84]
+science_marks = [80, 75, 85, 70, 90, 88, 78, 92, 82, 80]
+
+plt.figure(figsize=(10, 6))
+plt.scatter(math_marks, science_marks, color='blue', marker='o')
+
+plt.title('Scatter Plot of Mathematics vs Science Marks')
+plt.xlabel('Mathematics Marks')
+plt.ylabel('Science Marks')
+
+for i, student in enumerate(students):
+    plt.annotate(student, (math_marks[i], science_marks[i]), textcoords="offset points", xytext=(0,5), ha='center')
+
+plt.grid()
+plt.axhline(0, color='grey', lw=0.5)
+plt.axvline(0, color='grey', lw=0.5)
+
+plt.show()
