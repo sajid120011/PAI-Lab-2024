@@ -1,0 +1,15 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('students.csv')
+
+if 'Gender' not in data.columns:
+    raise ValueError("The dataset must contain a 'Gender' column.")
+
+gender_counts = data['Gender'].value_counts()
+
+plt.figure(figsize=(8, 6))
+plt.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Gender Distribution Among Students')
+plt.axis('equal')  # Equal aspect ratio ensures the pie chart is circular.
+plt.show()
