@@ -1,0 +1,81 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('heart_disease_data.csv')
+
+print(data.head())
+print(data.info())
+print(data.describe())
+
+print(data.isnull().sum())
+
+plt.figure(figsize=(6, 4))
+sns.countplot(data['target'])  
+plt.title("Heart Disease Distribution")
+plt.xlabel("Presence of Heart Disease (1: Yes, 0: No)")
+plt.ylabel("Count")
+plt.show()
+
+continuous_features = ['age', 'trestbps', 'chol', 'thalach'] 
+data[continuous_features].hist(bins=20, figsize=(12, 8), color='skyblue')
+plt.suptitle("Histograms of Continuous Features")
+plt.show()
+
+plt.figure(figsize=(12, 6))
+for i, feature in enumerate(continuous_features, 1):
+    plt.subplot(2, 2, i)
+    sns.boxplot(x='target', y=feature, data=data)
+    plt.title(f"Box Plot of {feature} by Heart Disease Status")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 8))
+corr_matrix = data.corr()
+sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", linewidths=0.5)
+plt.title("Correlation Matrix")
+plt.show()
+
+plt.figure(figsize=(12, 5))
+sns.countplot(x='sex', hue='target', data=data) 
+plt.title("Heart Disease Frequency by Gender")
+plt.xlabel("Gender (0: Female, 1: Male)")
+plt.ylabel("Count")
+plt.legend(title="Heart Disease", labels=["No", "Yes"])
+plt.show()
+
+plt.figure(figsize=(12, 5))
+sns.countplot(x='cp', hue='target', data=data)  
+plt.title("Heart Disease Frequency by Chest Pain Type")
+plt.xlabel("Chest Pain Type")
+plt.ylabel("Count")
+plt.legend(title="Heart Disease", labels=["No", "Yes"])
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.violinplot(x='target', y='age', data=data, palette="muted")
+plt.title("Age Distribution by Heart Disease Status")
+plt.xlabel("Heart Disease (0: No, 1: Yes)")
+plt.ylabel("Age")
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='target', y='chol', data=data)
+plt.title("Cholesterol Levels by Heart Disease Status")
+plt.xlabel("Heart Disease (0: No, 1: Yes)")
+plt.ylabel("Cholesterol")
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.kdeplot(data.loc[data['target'] == 0, 'thalach'], color='blue', label='No Heart Disease', shade=True)
+sns.kdeplot(data.loc[data['target'] == 1, 'thalach'], color='red', label='Heart Disease', shade=True)
+plt.title("Max Heart Rate Distribution by Heart Disease Status")
+plt.xlabel("Maximum Heart Rate")
+plt.ylabel("Density")
+plt.legend()
+plt.show()
+
+sns.pairplot(data[['age', 'chol', 'thalach', 'trestbps', 'target']], hue='target', palette='coolwarm')
+plt.suptitle("Pair Plot of Continuous Features by Heart Disease Status", y=1.02)
+plt.show()
